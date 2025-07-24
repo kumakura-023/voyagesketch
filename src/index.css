@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* カスタムCSS層 */
+@layer base {
+  /* iOS風のシステムフォント */
+  body {
+    @apply font-system text-system-label bg-system-background;
+  }
+}
+
+@layer components {
+  /* 動的カラー */
+  .dynamic-color {
+    /* ライトモード */
+    --color-label: rgba(0, 0, 0, 0.85);
+    --color-secondary-label: rgba(0, 0, 0, 0.5);
+    --color-tertiary-label: rgba(0, 0, 0, 0.25);
+    --color-separator: rgba(0, 0, 0, 0.15);
+    --color-fill: rgba(120, 120, 128, 0.2);
+    --color-secondary-fill: rgba(120, 120, 128, 0.16);
+    
+    /* アクセントカラー（ブランドカラー使用） */
+    --color-accent: #FF6B6B;
+    --color-accent-hover: #E53E3E;
+  }
+
+  /* ダークモード */
+  @media (prefers-color-scheme: dark) {
+    .dynamic-color {
+      --color-label: rgba(255, 255, 255, 0.85);
+      --color-secondary-label: rgba(255, 255, 255, 0.55);
+      --color-tertiary-label: rgba(255, 255, 255, 0.25);
+      --color-separator: rgba(255, 255, 255, 0.15);
+      --color-fill: rgba(120, 120, 128, 0.36);
+      --color-secondary-fill: rgba(120, 120, 128, 0.32);
+    }
+  }
+
+  /* iOS風タイポグラフィ */
+  .title-large { 
+    @apply text-[34px] leading-[41px] tracking-[0.374px] font-normal;
+  }
+  .title-1 { 
+    @apply text-[28px] leading-[34px] tracking-[0.364px] font-normal;
+  }
+  .title-2 { 
+    @apply text-[22px] leading-[28px] tracking-[0.352px] font-normal;
+  }
+  .title-3 { 
+    @apply text-[20px] leading-[25px] tracking-[0.38px] font-normal;
+  }
+  .headline { 
+    @apply text-[17px] leading-[22px] tracking-[-0.408px] font-semibold;
+  }
+  .body { 
+    @apply text-[17px] leading-[22px] tracking-[-0.408px] font-normal;
+  }
+  .callout { 
+    @apply text-[16px] leading-[21px] tracking-[-0.32px] font-normal;
+  }
+  .subheadline { 
+    @apply text-[15px] leading-[20px] tracking-[-0.24px] font-normal;
+  }
+  .footnote { 
+    @apply text-[13px] leading-[18px] tracking-[-0.078px] font-normal;
+  }
+  .caption-1 { 
+    @apply text-[12px] leading-[16px] tracking-[0px] font-normal;
+  }
+  .caption-2 { 
+    @apply text-[11px] leading-[13px] tracking-[0.066px] font-normal;
+  }
+
+  /* セーフエリア */
+  .safe-area-inset {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* ガラスモーフィズム */
+  .glass-effect {
+    @apply bg-white/70 backdrop-blur-xl backdrop-saturate-150;
+    @apply border border-white/20;
+  }
+
+  .glass-effect-dark {
+    @apply bg-gray-900/70 backdrop-blur-xl backdrop-saturate-150;
+    @apply border border-white/10;
+  }
+
+  /* ボタンスタイル */
+  .btn {
+    @apply relative inline-flex items-center justify-center;
+    @apply font-system text-[17px] font-normal tracking-[-0.408px];
+    @apply transition-all duration-100 ease-out;
+    @apply select-none touch-manipulation;
+    @apply active:scale-[0.96] active:opacity-60;
+  }
+
+  .btn-primary {
+    @apply btn bg-coral-500 text-white;
+    @apply px-5 py-3 rounded-lg;
+    @apply shadow-elevation-2 hover:shadow-elevation-3;
+    @apply active:bg-coral-600;
+  }
+
+  .btn-secondary {
+    @apply btn bg-system-secondary-background text-system-label;
+    @apply px-5 py-3 rounded-lg;
+    @apply hover:bg-gray-100;
+  }
+
+  /* カード */
+  .card {
+    @apply bg-white rounded-xl;
+    @apply shadow-elevation-2;
+    @apply overflow-hidden;
+  }
+
+  .card-interactive {
+    @apply card cursor-pointer;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:shadow-elevation-3 hover:scale-[1.01];
+    @apply active:scale-[0.99] active:shadow-elevation-1;
+  }
+
+  /* フォーム要素 */
+  .input {
+    @apply w-full px-4 py-3;
+    @apply bg-system-secondary-background;
+    @apply rounded-lg border-0;
+    @apply text-[17px] tracking-[-0.408px];
+    @apply placeholder-system-tertiary-label;
+    @apply transition-all duration-150;
+    @apply focus:outline-none focus:ring-2 focus:ring-coral-500/30;
+    @apply focus:bg-white;
+  }
+}
+
+@layer utilities {
+  /* iOS風のトランジション */
+  .ease-ios-default { 
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .ease-ios-in-out { 
+    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+  }
+  .ease-ios-out { 
+    transition-timing-function: cubic-bezier(0.19, 0.91, 0.38, 1);
+  }
+}
