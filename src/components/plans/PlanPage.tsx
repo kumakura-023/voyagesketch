@@ -7,9 +7,7 @@ import { CategoryFilter } from '@/components/places/CategoryFilter';
 import { EditPlanModal } from '@/components/plans/EditPlanModal';
 import { usePlanStore } from '@/stores/planStore';
 import { useAuthStore } from '@/stores/authStore';
-import { usePlaceActions } from '@/hooks/places/usePlaceActions';
 import type { PlaceCategory } from '@/types/core';
-import { v4 as uuidv4 } from 'uuid';
 
 export const PlanPage: React.FC = () => {
   const { planId } = useParams<{ planId: string }>();
@@ -18,9 +16,8 @@ export const PlanPage: React.FC = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   
-  const { currentPlan, setCurrentPlan, plans } = usePlanStore();
+  const { currentPlan, setCurrentPlan } = usePlanStore();
   const { user } = useAuthStore();
-  const { addPlaceFromGoogle } = usePlaceActions();
 
   // 初回マウント時にプランを設定
   useEffect(() => {

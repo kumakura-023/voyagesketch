@@ -28,7 +28,7 @@ interface PlanActions {
 }
 
 export const usePlanStore = create<PlanState & PlanActions>()(
-  immer((set, get) => ({
+  immer((set) => ({
     // State
     currentPlan: null,
     plans: [],

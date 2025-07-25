@@ -77,8 +77,12 @@ class CloudSyncService {
 
       // FirestoreデータをPlan型に変換
       const plan: Plan = {
-        ...data,
         id: doc.id,
+        title: data.title || '',
+        description: data.description || '',
+        isPublic: data.isPublic || false,
+        members: data.members || [],
+        createdBy: data.createdBy || '',
         createdAt: data.createdAt?.toDate() || new Date(),
         updatedAt: data.updatedAt?.toDate() || new Date(),
         startDate: data.startDate?.toDate(),
@@ -88,6 +92,8 @@ class CloudSyncService {
           createdAt: place.createdAt?.toDate() || new Date(),
           updatedAt: place.updatedAt?.toDate() || new Date(),
         })) || [],
+        lastOperationId: data.lastOperationId,
+        lastOperatorId: data.lastOperatorId,
       };
 
       onUpdate(plan, false);

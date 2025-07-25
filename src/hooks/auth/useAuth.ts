@@ -8,7 +8,7 @@ const MOCK_USER = {
   id: 'dev-user-123',
   email: 'dev@example.com',
   displayName: '開発ユーザー',
-  photoURL: null,
+  photoURL: undefined,
   createdAt: new Date(),
   updatedAt: new Date(),
 };

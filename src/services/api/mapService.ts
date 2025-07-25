@@ -3,7 +3,6 @@ import { GooglePlace } from '@/types/api';
 class MapService {
   private map: google.maps.Map | null = null;
   private placesService: google.maps.places.PlacesService | null = null;
-  private directionsService: google.maps.DirectionsService | null = null;
 
   async initializeMap(container: HTMLElement, options: google.maps.MapOptions): Promise<google.maps.Map> {
     // Google Maps APIの遅延読み込み
@@ -21,7 +20,6 @@ class MapService {
     });
 
     this.placesService = new google.maps.places.PlacesService(this.map);
-    this.directionsService = new google.maps.DirectionsService();
 
     return this.map;
   }
